@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Breaker & Conductor Sizing — Always On Generators</title>
+<title>Breaker &amp; Conductor Sizing — Always On Generators</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── THEME TOKENS ─────────────────────────────────────── */
 :root {
   --yellow: #FCD34D;
   --yellow-bright: #FBBF24;
@@ -22,7 +21,6 @@
   --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
 }
 
-/* DARK MODE (default) */
 [data-theme="dark"] {
   --bg: #0A0E27;
   --bg-mid: #0F1535;
@@ -56,7 +54,6 @@
   --header-border: rgba(251,191,36,0.2);
 }
 
-/* LIGHT MODE */
 [data-theme="light"] {
   --bg: #F8F5EE;
   --bg-mid: #FFFDF7;
@@ -90,7 +87,6 @@
   --header-border: rgba(180,130,20,0.25);
 }
 
-/* ── RESET ────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -104,7 +100,6 @@ body {
   position: relative;
 }
 
-/* animated grid bg — dark only */
 [data-theme="dark"] body::before {
   content: '';
   position: fixed; inset: 0;
@@ -129,7 +124,6 @@ body {
   pointer-events: none; z-index: 0;
 }
 
-/* light bg texture */
 [data-theme="light"] body::before {
   content: '';
   position: fixed; inset: 0;
@@ -141,7 +135,6 @@ body {
   opacity: 0.5;
 }
 
-/* ── LAYOUT ───────────────────────────────────────────── */
 .page {
   position: relative; z-index: 1;
   max-width: 900px;
@@ -149,7 +142,6 @@ body {
   padding: 24px 16px 48px;
 }
 
-/* ── THEME TOGGLE ─────────────────────────────────────── */
 .theme-toggle-wrap {
   display: flex;
   justify-content: flex-end;
@@ -169,13 +161,9 @@ body {
   display: flex; align-items: center; gap: 7px;
   transition: var(--transition);
 }
-.theme-btn:hover {
-  border-color: var(--orange);
-  color: var(--orange-bright);
-}
+.theme-btn:hover { border-color: var(--orange); color: var(--orange-bright); }
 .theme-icon { font-size: 14px; }
 
-/* ── HEADER ───────────────────────────────────────────── */
 .header {
   text-align: center;
   padding: 28px 16px 24px;
@@ -193,9 +181,7 @@ body {
   width: 80px; height: 80px; object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(251,191,36,0.5));
 }
-[data-theme="light"] .logo-img {
-  filter: drop-shadow(0 0 6px rgba(180,130,20,0.4));
-}
+[data-theme="light"] .logo-img { filter: drop-shadow(0 0 6px rgba(180,130,20,0.4)); }
 .title-block { text-align: left; }
 @media(max-width:520px){ .title-block { text-align: center; } }
 
@@ -229,7 +215,6 @@ body {
 }
 .tool-title span { color: var(--orange-bright); }
 
-/* ── PANEL / CARD ─────────────────────────────────────── */
 .panel {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -259,7 +244,6 @@ body {
   background: var(--divider);
 }
 
-/* ── SELECTS GRID ─────────────────────────────────────── */
 .selects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -296,7 +280,6 @@ select:focus {
   box-shadow: 0 0 0 2px rgba(249,115,22,0.15);
 }
 
-/* ── RESULT PANEL ─────────────────────────────────────── */
 .result-panel {
   background: var(--result-bg);
   border: 1px solid var(--result-border);
@@ -311,7 +294,6 @@ select:focus {
   opacity: 0.6;
 }
 
-/* result metric grid */
 .metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -346,7 +328,6 @@ select:focus {
   margin-top: 4px;
 }
 
-/* tags */
 .tag {
   display: inline-block;
   font-family: var(--font-mono);
@@ -361,10 +342,8 @@ select:focus {
 .tag-info { background: var(--tag-info-bg);  color: var(--tag-info-text); }
 .tag-err  { background: var(--tag-err-bg);   color: var(--tag-err-text);  }
 
-/* divider */
 .hr { border: none; border-top: 1px solid var(--divider); margin: 14px 0; }
 
-/* notes */
 .note-block {
   background: var(--note-bg);
   border-left: 2px solid var(--blue-electric);
@@ -384,7 +363,6 @@ select:focus {
 .note-block.warn { border-left-color: var(--orange); }
 .note-block.err  { border-left-color: #F87171; }
 
-/* derating flag */
 .derate-flag {
   display: flex; align-items: center; gap: 10px;
   padding: 10px 14px;
@@ -403,23 +381,12 @@ select:focus {
   border: 1px solid rgba(16,185,129,0.2);
   color: #34D399;
 }
-[data-theme="light"] .derate-flag.active {
-  background: rgba(180,83,9,0.08);
-  border-color: rgba(180,83,9,0.25);
-  color: #92400E;
-}
-[data-theme="light"] .derate-flag.inactive {
-  background: rgba(5,150,105,0.08);
-  border-color: rgba(5,150,105,0.2);
-  color: #065F46;
-}
-.derate-dot {
-  width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-}
+[data-theme="light"] .derate-flag.active { background: rgba(180,83,9,0.08); border-color: rgba(180,83,9,0.25); color: #92400E; }
+[data-theme="light"] .derate-flag.inactive { background: rgba(5,150,105,0.08); border-color: rgba(5,150,105,0.2); color: #065F46; }
+.derate-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .derate-flag.active .derate-dot   { background: var(--orange); box-shadow: 0 0 6px var(--orange); }
 .derate-flag.inactive .derate-dot { background: #10B981; box-shadow: 0 0 6px #10B981; }
 
-/* ── FOOTER ───────────────────────────────────────────── */
 .footer {
   text-align: center;
   padding-top: 24px;
@@ -438,7 +405,6 @@ select:focus {
 }
 .footer-version span { color: var(--blue-electric); }
 
-/* ── RESPONSIVE ───────────────────────────────────────── */
 @media(max-width:480px){
   .selects-grid { grid-template-columns: 1fr 1fr; }
   .metrics { grid-template-columns: 1fr 1fr; }
@@ -454,10 +420,15 @@ select:focus {
 
 <div class="page">
 
+  <!-- HOME BUTTON -->
+  <div style="margin-bottom:12px;">
+    <button class="theme-btn" onclick="window.location.href='https://brandonaog.github.io/AOG-hub/'" style="justify-content:center;">&#127968; HOME</button>
+  </div>
+
   <!-- THEME TOGGLE -->
   <div class="theme-toggle-wrap">
     <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">
-      <span class="theme-icon" id="themeIcon">☀️</span>
+      <span class="theme-icon" id="themeIcon">&#9728;&#65039;</span>
       <span id="themeLabel">Light Mode</span>
     </button>
   </div>
@@ -533,7 +504,7 @@ select:focus {
       <div class="field">
         <label>Application</label>
         <select id="application">
-          <option value="general">General (310.16 75°C)</option>
+          <option value="general">General (310.16 75&deg;C)</option>
           <option value="dwelling">1&amp;2 Family Dwelling Svc/Feeder (310.12)</option>
         </select>
       </div>
@@ -557,12 +528,12 @@ select:focus {
       <div class="field">
         <label>Current-Carrying Conductors in Raceway</label>
         <select id="ccc">
-          <option value="3">1–3 (no derating)</option>
-          <option value="4">4–6 conductors (80%)</option>
-          <option value="7">7–9 conductors (70%)</option>
-          <option value="10">10–20 conductors (50%)</option>
-          <option value="21">21–30 conductors (45%)</option>
-          <option value="31">31–40 conductors (40%)</option>
+          <option value="3">1&#x2013;3 (no derating)</option>
+          <option value="4">4&#x2013;6 conductors (80%)</option>
+          <option value="7">7&#x2013;9 conductors (70%)</option>
+          <option value="10">10&#x2013;20 conductors (50%)</option>
+          <option value="21">21&#x2013;30 conductors (45%)</option>
+          <option value="31">31&#x2013;40 conductors (40%)</option>
           <option value="41">41+ conductors (35%)</option>
         </select>
       </div>
@@ -577,8 +548,8 @@ select:focus {
 
   <!-- FOOTER -->
   <div class="footer">
-    <div class="footer-text">Always On Generators · Field Operations Portal</div>
-    <div class="footer-version">NEC <span>2023</span> · 240.6 · 240.4 · 310.16 · 310.12 · 250.122</div>
+    <div class="footer-text">Always On Generators &middot; Field Operations Portal</div>
+    <div class="footer-version">NEC <span>2023</span> &middot; 240.6 &middot; 240.4 &middot; 310.16 &middot; 310.12 &middot; 250.122</div>
   </div>
 
 </div>
@@ -586,8 +557,7 @@ select:focus {
 <script>
 /* ── NEC TABLES ─────────────────────────────────────────────────── */
 
-/* 310.16 — 75°C column, copper */
-const cu75 = [
+var cu75 = [
   { size:'14 AWG',    amps:20  },
   { size:'12 AWG',    amps:25  },
   { size:'10 AWG',    amps:35  },
@@ -618,8 +588,7 @@ const cu75 = [
   { size:'2000 kcmil',amps:665 },
 ];
 
-/* 310.16 — 75°C column, aluminum */
-const al75 = [
+var al75 = [
   { size:'12 AWG',    amps:20  },
   { size:'10 AWG',    amps:30  },
   { size:'8 AWG',     amps:40  },
@@ -649,275 +618,238 @@ const al75 = [
   { size:'2000 kcmil',amps:560 },
 ];
 
-/* 310.12 — the 83% rule means: take 83% of the breaker rating,
-   then find the conductor in Table 310.16 (75°C) whose ampacity
-   meets or exceeds that value. No separate table needed —
-   we re-use cu75 / al75 with the derated required ampacity. */
-
-/* 250.122 — EGC minimum sizes (copper) based on OCPD rating */
-const egcTable = [
-  { ocpd:15,   cu:'14 AWG', al:'12 AWG' },
-  { ocpd:20,   cu:'12 AWG', al:'10 AWG' },
-  { ocpd:60,   cu:'10 AWG', al:'8 AWG'  },
-  { ocpd:100,  cu:'8 AWG',  al:'6 AWG'  },
-  { ocpd:200,  cu:'6 AWG',  al:'4 AWG'  },
-  { ocpd:300,  cu:'4 AWG',  al:'2 AWG'  },
-  { ocpd:400,  cu:'3 AWG',  al:'1 AWG'  },
-  { ocpd:450,  cu:'3 AWG',  al:'1 AWG'  },
-  { ocpd:500,  cu:'2 AWG',  al:'1/0 AWG'},
-  { ocpd:600,  cu:'1 AWG',  al:'2/0 AWG'},
-  { ocpd:700,  cu:'1 AWG',  al:'2/0 AWG'},
-  { ocpd:800,  cu:'1/0 AWG',al:'3/0 AWG'},
-  { ocpd:1000, cu:'2/0 AWG',al:'4/0 AWG'},
-  { ocpd:1200, cu:'3/0 AWG',al:'250 kcmil'},
-  { ocpd:1600, cu:'4/0 AWG',al:'350 kcmil'},
-  { ocpd:2000, cu:'250 kcmil',al:'400 kcmil'},
-  { ocpd:2500, cu:'350 kcmil',al:'600 kcmil'},
-  { ocpd:3000, cu:'400 kcmil',al:'600 kcmil'},
-  { ocpd:4000, cu:'500 kcmil',al:'750 kcmil'},
-  { ocpd:5000, cu:'700 kcmil',al:'1250 kcmil'},
-  { ocpd:6000, cu:'800 kcmil',al:'1250 kcmil'},
+var egcTable = [
+  { ocpd:15,   cu:'14 AWG',    al:'12 AWG'     },
+  { ocpd:20,   cu:'12 AWG',    al:'10 AWG'     },
+  { ocpd:60,   cu:'10 AWG',    al:'8 AWG'      },
+  { ocpd:100,  cu:'8 AWG',     al:'6 AWG'      },
+  { ocpd:200,  cu:'6 AWG',     al:'4 AWG'      },
+  { ocpd:300,  cu:'4 AWG',     al:'2 AWG'      },
+  { ocpd:400,  cu:'3 AWG',     al:'1 AWG'      },
+  { ocpd:450,  cu:'3 AWG',     al:'1 AWG'      },
+  { ocpd:500,  cu:'2 AWG',     al:'1/0 AWG'    },
+  { ocpd:600,  cu:'1 AWG',     al:'2/0 AWG'    },
+  { ocpd:700,  cu:'1 AWG',     al:'2/0 AWG'    },
+  { ocpd:800,  cu:'1/0 AWG',   al:'3/0 AWG'    },
+  { ocpd:1000, cu:'2/0 AWG',   al:'4/0 AWG'    },
+  { ocpd:1200, cu:'3/0 AWG',   al:'250 kcmil'  },
+  { ocpd:1600, cu:'4/0 AWG',   al:'350 kcmil'  },
+  { ocpd:2000, cu:'250 kcmil', al:'400 kcmil'  },
+  { ocpd:2500, cu:'350 kcmil', al:'600 kcmil'  },
+  { ocpd:3000, cu:'400 kcmil', al:'600 kcmil'  },
+  { ocpd:4000, cu:'500 kcmil', al:'750 kcmil'  },
+  { ocpd:5000, cu:'700 kcmil', al:'1250 kcmil' },
+  { ocpd:6000, cu:'800 kcmil', al:'1250 kcmil' },
 ];
 
-/* Derating factors — NEC Table 310.15(C)(1) */
-const derateFactor = (cccVal) => {
-  const v = parseInt(cccVal);
+function derateFactor(cccVal) {
+  var v = parseInt(cccVal);
   if (v <= 3)  return { factor: 1.00, label: 'No derating', pct: '100%' };
-  if (v <= 6)  return { factor: 0.80, label: '4–6 CCC',     pct: '80%'  };
-  if (v <= 9)  return { factor: 0.70, label: '7–9 CCC',     pct: '70%'  };
-  if (v <= 20) return { factor: 0.50, label: '10–20 CCC',   pct: '50%'  };
-  if (v <= 30) return { factor: 0.45, label: '21–30 CCC',   pct: '45%'  };
-  if (v <= 40) return { factor: 0.40, label: '31–40 CCC',   pct: '40%'  };
+  if (v <= 6)  return { factor: 0.80, label: '4\u20136 CCC',   pct: '80%'  };
+  if (v <= 9)  return { factor: 0.70, label: '7\u20139 CCC',   pct: '70%'  };
+  if (v <= 20) return { factor: 0.50, label: '10\u201320 CCC', pct: '50%'  };
+  if (v <= 30) return { factor: 0.45, label: '21\u201330 CCC', pct: '45%'  };
+  if (v <= 40) return { factor: 0.40, label: '31\u201340 CCC', pct: '40%'  };
   return               { factor: 0.35, label: '41+ CCC',     pct: '35%'  };
-};
+}
 
 function pickConductor(table, minAmps) {
-  return table.find(r => r.amps >= minAmps) || null;
+  for (var i = 0; i < table.length; i++) {
+    if (table[i].amps >= minAmps) return table[i];
+  }
+  return null;
 }
 
 function pickEGC(ocpd, mat) {
-  const row = egcTable.find(r => r.ocpd >= ocpd);
-  if (!row) return egcTable[egcTable.length - 1];
+  var row = null;
+  for (var i = 0; i < egcTable.length; i++) {
+    if (egcTable[i].ocpd >= ocpd) { row = egcTable[i]; break; }
+  }
+  if (!row) row = egcTable[egcTable.length - 1];
   return mat === 'copper' ? row.cu : row.al;
 }
 
 /* ── MAIN CALC ───────────────────────────────────────────────────── */
 function calc() {
-  const breaker  = parseInt(document.getElementById('breaker').value);
-  const mat      = document.getElementById('material').value;
-  const app      = document.getElementById('application').value;
-  const sets     = parseInt(document.getElementById('sets').value);
-  const cccVal   = document.getElementById('ccc').value;
+  var breaker  = parseInt(document.getElementById('breaker').value);
+  var mat      = document.getElementById('material').value;
+  var app      = document.getElementById('application').value;
+  var sets     = parseInt(document.getElementById('sets').value);
+  var cccVal   = document.getElementById('ccc').value;
 
-  const isDwelling = app === 'dwelling';
-  const table75    = mat === 'copper' ? cu75 : al75;
+  var isDwelling = app === 'dwelling';
+  var table75    = mat === 'copper' ? cu75 : al75;
 
-  const df         = derateFactor(cccVal);
-  const isDerating = df.factor < 1.0;
+  var df         = derateFactor(cccVal);
+  var isDerating = df.factor < 1.0;
 
-  /* ─ required ampacity per set (before derating) ─ */
-  const ampPerSet = Math.ceil(breaker / sets);
+  var ampPerSet = Math.ceil(breaker / sets);
 
-  /* ─ conductor selection ─ */
-  let conductor, method, ruleNote, tableUsed, exceeded = false;
+  var conductor, method, ruleNote, tableUsed, exceeded = false;
 
   if (isDwelling && breaker >= 100 && breaker <= 400) {
-    /* 310.12 — 83% rule:
-       Step 1: multiply breaker rating × 0.83 to get the minimum required ampacity.
-       Step 2: find the conductor in Table 310.16 (75°C) whose ampacity
-               meets or exceeds that value (per set if paralleling).
-       The 83% rule only applies when conductors supply the ENTIRE load
-       of a one- or two-family dwelling. */
-    const req83total = breaker * 0.83;            // e.g. 200A × 0.83 = 166A
-    const req83perSet = Math.ceil(req83total / sets);
-    const entry = pickConductor(table75, req83perSet);
+    var req83total  = breaker * 0.83;
+    var req83perSet = Math.ceil(req83total / sets);
+    var entry = pickConductor(table75, req83perSet);
     conductor = entry ? entry.size : null;
     if (!conductor) exceeded = true;
     method    = '310.12 Dwelling (83% rule)';
-    tableUsed = 'Table 310.16, 75°C col. (via 310.12)';
-    ruleNote  = `83% rule: ${breaker}A × 83% = ${Math.round(req83total)}A minimum ampacity${sets > 1 ? ` ÷ ${sets} sets = ${req83perSet}A/set` : ''}. Conductor selected from Table 310.16, 75°C column. Applies only when conductors supply the entire load of a 1 or 2 family dwelling.`;
+    tableUsed = 'Table 310.16, 75\u00b0C col. (via 310.12)';
+    ruleNote  = '83% rule: ' + breaker + 'A \u00d7 83% = ' + Math.round(req83total) + 'A minimum ampacity' + (sets > 1 ? ' \u00f7 ' + sets + ' sets = ' + req83perSet + 'A/set' : '') + '. Conductor selected from Table 310.16, 75\u00b0C column. Applies only when conductors supply the entire load of a 1 or 2 family dwelling.';
   } else {
-    /* General — 240.4 / 310.16 */
-    let requiredAmpacity;
+    var requiredAmpacity;
     if (isDerating) {
-      /* conductor must have enough ampacity AFTER the derate factor to still cover ampPerSet */
       requiredAmpacity = Math.ceil(ampPerSet / df.factor);
     } else {
       requiredAmpacity = ampPerSet;
     }
 
-    const row = pickConductor(table75, requiredAmpacity);
-    if (!row) { exceeded = true; conductor = null; }
-    else {
-      conductor = row.size;
-      /* If derating, confirm the derated ampacity actually covers the breaker (sanity) */
-    }
+    var row2 = pickConductor(table75, requiredAmpacity);
+    if (!row2) { exceeded = true; conductor = null; }
+    else { conductor = row2.size; }
 
     if (breaker <= 800) {
-      method    = '240.4(B) — Next standard size ≤ 800A';
-      tableUsed = 'Table 310.16, 75°C col.';
-      ruleNote  = `Breaker ${breaker}A${sets > 1 ? ` ÷ ${sets} sets = ${ampPerSet}A/set` : ''}${isDerating ? ` → derate factor ${df.pct} → min table ampacity ${Math.ceil(ampPerSet / df.factor)}A/set` : ''}. Next standard breaker size up permitted per 240.4(B).`;
+      method    = '240.4(B) \u2014 Next standard size \u2264 800A';
+      tableUsed = 'Table 310.16, 75\u00b0C col.';
+      ruleNote  = 'Breaker ' + breaker + 'A' + (sets > 1 ? ' \u00f7 ' + sets + ' sets = ' + ampPerSet + 'A/set' : '') + (isDerating ? ' \u2192 derate factor ' + df.pct + ' \u2192 min table ampacity ' + Math.ceil(ampPerSet / df.factor) + 'A/set' : '') + '. Next standard breaker size up permitted per 240.4(B).';
     } else {
-      method    = '240.4(C) — Exact ampacity required > 800A';
-      tableUsed = 'Table 310.16, 75°C col.';
-      ruleNote  = `Over 800A — conductor ampacity must equal or exceed ${ampPerSet}A/set${isDerating ? ` (${Math.ceil(ampPerSet / df.factor)}A/set pre-derate)` : ''}. Next standard size NOT allowed per 240.4(C).`;
+      method    = '240.4(C) \u2014 Exact ampacity required > 800A';
+      tableUsed = 'Table 310.16, 75\u00b0C col.';
+      ruleNote  = 'Over 800A \u2014 conductor ampacity must equal or exceed ' + ampPerSet + 'A/set' + (isDerating ? ' (' + Math.ceil(ampPerSet / df.factor) + 'A/set pre-derate)' : '') + '. Next standard size NOT allowed per 240.4(C).';
     }
   }
 
-  /* ─ derated ampacity of selected conductor ─ */
-  let deratedAmpacity = null;
+  var deratedAmpacity = null;
   if (!exceeded && conductor && !isDwelling) {
-    const tRow = table75.find(r => r.size === conductor);
+    var tRow = null;
+    for (var j = 0; j < table75.length; j++) {
+      if (table75[j].size === conductor) { tRow = table75[j]; break; }
+    }
     if (tRow) deratedAmpacity = Math.floor(tRow.amps * df.factor);
   }
 
-  /* ─ EGC ─ */
-  const egcSize = pickEGC(breaker, mat);
+  var egcSize = pickEGC(breaker, mat);
+  var matLabel = mat === 'copper' ? 'Copper' : 'Aluminum / CU-clad AL';
 
-  /* ── BUILD HTML ──────────────────────────────────────────────── */
-  const matLabel = mat === 'copper' ? 'Copper' : 'Aluminum / CU-clad AL';
+  var html = '';
 
-  let html = '';
+  html += '<div class="derate-flag ' + (isDerating ? 'active' : 'inactive') + '">' +
+    '<span class="derate-dot"></span>' +
+    '<span>' + (isDerating
+      ? 'Derating active \u2014 ' + df.pct + ' factor applied (' + df.label + ') per Table 310.15(C)(1)'
+      : 'No derating \u2014 1 to 3 current-carrying conductors in raceway') + '</span>' +
+    '</div>';
 
-  /* derating badge */
-  html += `<div class="derate-flag ${isDerating ? 'active' : 'inactive'}">
-    <span class="derate-dot"></span>
-    <span>${isDerating
-      ? `Derating active — ${df.pct} factor applied (${df.label}) per Table 310.15(C)(1)`
-      : 'No derating — 1 to 3 current-carrying conductors in raceway'}</span>
-  </div>`;
+  var smallerThan1_0 = ['14 AWG','12 AWG','10 AWG','8 AWG','6 AWG','4 AWG','3 AWG','2 AWG','1 AWG'];
+  var parallelViolation = sets > 1 && !exceeded && conductor && smallerThan1_0.indexOf(conductor) !== -1;
 
-  /* ─ parallel violation check ─ */
-  const smallerThan1_0 = ['14 AWG','12 AWG','10 AWG','8 AWG','6 AWG','4 AWG','3 AWG','2 AWG','1 AWG'];
-  const parallelViolation = sets > 1 && !exceeded && conductor && smallerThan1_0.includes(conductor);
+  var dwellingRangeViolation   = isDwelling && (breaker < 100 || breaker > 400);
+  var dwellingParallelViolation = isDwelling && sets > 1;
 
-  /* ─ 310.12 violation checks ─ */
-  const dwellingRangeViolation = isDwelling && (breaker < 100 || breaker > 400);
-  const dwellingParallelViolation = isDwelling && sets > 1;
-  const dwellingViolation = dwellingRangeViolation || dwellingParallelViolation;
-
-  /* metric cards */
   html += '<div class="metrics">';
 
-  /* conductor — 310.12 range violation */
   if (dwellingRangeViolation) {
-    const reason = breaker < 100
-      ? `${breaker}A is below the 100A minimum for 310.12`
-      : `${breaker}A exceeds the 400A maximum for 310.12`;
-    html += `<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">
-      <div class="metric-label" style="color:#F87171;">Conductor / Set — Not Applicable</div>
-      <div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>
-      <div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">${reason}</div>
-      <div class="metric-sub" style="color:#FCA5A5;">310.12 only applies to 100A–400A single-phase dwelling services and feeders</div>
-      <span class="tag tag-err" style="margin-top:8px;">310.12 — select General (310.16) or change breaker size</span>
-    </div>`;
-  /* conductor — 310.12 + parallel violation */
+    var reason = breaker < 100
+      ? (breaker + 'A is below the 100A minimum for 310.12')
+      : (breaker + 'A exceeds the 400A maximum for 310.12');
+    html += '<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">' +
+      '<div class="metric-label" style="color:#F87171;">Conductor / Set \u2014 Not Applicable</div>' +
+      '<div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">' + reason + '</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;">310.12 only applies to 100A\u2013400A single-phase dwelling services and feeders</div>' +
+      '<span class="tag tag-err" style="margin-top:8px;">310.12 \u2014 select General (310.16) or change breaker size</span>' +
+      '</div>';
   } else if (dwellingParallelViolation) {
-    html += `<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">
-      <div class="metric-label" style="color:#F87171;">Conductor / Set — Not Applicable</div>
-      <div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>
-      <div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">310.12 does not permit parallel conductor sets</div>
-      <div class="metric-sub" style="color:#FCA5A5;">Set parallel sets to 1, or switch to General (310.16)</div>
-      <span class="tag tag-err" style="margin-top:8px;">310.12 — paralleling not permitted under this section</span>
-    </div>`;
-  /* conductor — parallel size violation */
+    html += '<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">' +
+      '<div class="metric-label" style="color:#F87171;">Conductor / Set \u2014 Not Applicable</div>' +
+      '<div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">310.12 does not permit parallel conductor sets</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;">Set parallel sets to 1, or switch to General (310.16)</div>' +
+      '<span class="tag tag-err" style="margin-top:8px;">310.12 \u2014 paralleling not permitted under this section</span>' +
+      '</div>';
   } else if (parallelViolation) {
-    html += `<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">
-      <div class="metric-label" style="color:#F87171;">Conductor / Set — Violation</div>
-      <div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>
-      <div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">Selected conductor (${conductor}) is smaller than 1/0 AWG</div>
-      <div class="metric-sub" style="color:#FCA5A5;">Paralleling prohibited — check 310.10(H)</div>
-      <span class="tag tag-err" style="margin-top:8px;">310.10(H) Violation — increase sets or use larger breaker</span>
-    </div>`;
+    html += '<div class="metric" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.5);grid-column:span 2;">' +
+      '<div class="metric-label" style="color:#F87171;">Conductor / Set \u2014 Violation</div>' +
+      '<div class="metric-value" style="color:#F87171;font-size:clamp(1rem,3vw,1.5rem);">Not Allowed</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;margin-top:6px;">Selected conductor (' + conductor + ') is smaller than 1/0 AWG</div>' +
+      '<div class="metric-sub" style="color:#FCA5A5;">Paralleling prohibited \u2014 check 310.10(H)</div>' +
+      '<span class="tag tag-err" style="margin-top:8px;">310.10(H) Violation \u2014 increase sets or use larger breaker</span>' +
+      '</div>';
   } else {
-    html += `<div class="metric">
-      <div class="metric-label">Conductor / Set</div>
-      <div class="metric-value">${exceeded ? '—' : conductor}</div>
-      <div class="metric-sub">${matLabel}</div>
-      <div class="metric-sub">${tableUsed}</div>
-      <span class="tag ${isDwelling ? 'tag-info' : breaker > 800 ? 'tag-warn' : 'tag-ok'}">${method}</span>
-    </div>`;
+    html += '<div class="metric">' +
+      '<div class="metric-label">Conductor / Set</div>' +
+      '<div class="metric-value">' + (exceeded ? '\u2014' : conductor) + '</div>' +
+      '<div class="metric-sub">' + matLabel + '</div>' +
+      '<div class="metric-sub">' + tableUsed + '</div>' +
+      '<span class="tag ' + (isDwelling ? 'tag-info' : breaker > 800 ? 'tag-warn' : 'tag-ok') + '">' + method + '</span>' +
+      '</div>';
   }
 
-  /* breaker / required */
-  html += `<div class="metric">
-    <div class="metric-label">OCPD Rating</div>
-    <div class="metric-value">${breaker}A</div>
-    <div class="metric-sub">${sets > 1 ? `${ampPerSet}A min per set (${sets} sets)` : 'Single conductor set'}</div>
-  </div>`;
+  html += '<div class="metric">' +
+    '<div class="metric-label">OCPD Rating</div>' +
+    '<div class="metric-value">' + breaker + 'A</div>' +
+    '<div class="metric-sub">' + (sets > 1 ? ampPerSet + 'A min per set (' + sets + ' sets)' : 'Single conductor set') + '</div>' +
+    '</div>';
 
-  /* derated ampacity */
   if (!isDwelling && !exceeded && deratedAmpacity !== null) {
-    const ok = deratedAmpacity >= ampPerSet;
-    html += `<div class="metric">
-      <div class="metric-label">Derated Ampacity</div>
-      <div class="metric-value">${deratedAmpacity}A</div>
-      <div class="metric-sub">After ${df.pct} factor / set</div>
-      <span class="tag ${ok ? 'tag-ok' : 'tag-err'}">${ok ? 'Adequate' : 'Insufficient'}</span>
-    </div>`;
+    var ok = deratedAmpacity >= ampPerSet;
+    html += '<div class="metric">' +
+      '<div class="metric-label">Derated Ampacity</div>' +
+      '<div class="metric-value">' + deratedAmpacity + 'A</div>' +
+      '<div class="metric-sub">After ' + df.pct + ' factor / set</div>' +
+      '<span class="tag ' + (ok ? 'tag-ok' : 'tag-err') + '">' + (ok ? 'Adequate' : 'Insufficient') + '</span>' +
+      '</div>';
   }
 
-  /* EGC */
-  html += `<div class="metric">
-    <div class="metric-label">Min EGC Size</div>
-    <div class="metric-value" style="font-size:clamp(1rem,3vw,1.4rem)">${egcSize}</div>
-    <div class="metric-sub">${matLabel}</div>
-    <span class="tag tag-info">250.122</span>
-  </div>`;
+  html += '<div class="metric">' +
+    '<div class="metric-label">Min EGC Size</div>' +
+    '<div class="metric-value" style="font-size:clamp(1rem,3vw,1.4rem)">' + egcSize + '</div>' +
+    '<div class="metric-sub">' + matLabel + '</div>' +
+    '<span class="tag tag-info">250.122</span>' +
+    '</div>';
 
-  html += '</div>'; /* end metrics */
+  html += '</div>';
 
-  /* notes */
   html += '<div class="hr"></div>';
 
-  html += `<div class="note-block">
-    <strong>Code basis — conductor sizing</strong>
-    ${ruleNote}
-  </div>`;
+  html += '<div class="note-block"><strong>Code basis \u2014 conductor sizing</strong>' + ruleNote + '</div>';
 
   if (isDerating) {
-    html += `<div class="note-block warn">
-      <strong>Derating — Table 310.15(C)(1)</strong>
-      More than 3 current-carrying conductors in a raceway. ${df.pct} adjustment factor applied to base ampacity. Conductor must have a base ampacity of at least ${!isDwelling && conductor ? Math.ceil(ampPerSet / df.factor) : '—'}A to yield ${ampPerSet}A after derating.
-    </div>`;
+    html += '<div class="note-block warn"><strong>Derating \u2014 Table 310.15(C)(1)</strong>' +
+      'More than 3 current-carrying conductors in a raceway. ' + df.pct + ' adjustment factor applied to base ampacity. Conductor must have a base ampacity of at least ' + (!isDwelling && conductor ? Math.ceil(ampPerSet / df.factor) : '\u2014') + 'A to yield ' + ampPerSet + 'A after derating.' +
+      '</div>';
   }
 
   if (sets > 1) {
     if (dwellingParallelViolation) {
-      html += `<div class="note-block err">
-        <strong>310.12 — Paralleling not permitted</strong>
-        NEC 310.12 applies to single conductors supplying the entire load of a dwelling. Parallel sets are not recognized under this section. Set parallel sets to 1, or switch to the General (310.16 75°C) application.
-      </div>`;
+      html += '<div class="note-block err"><strong>310.12 \u2014 Paralleling not permitted</strong>' +
+        'NEC 310.12 applies to single conductors supplying the entire load of a dwelling. Parallel sets are not recognized under this section. Set parallel sets to 1, or switch to the General (310.16 75\u00b0C) application.' +
+        '</div>';
     } else if (parallelViolation) {
-      html += `<div class="note-block err">
-        <strong>310.10(H) — Parallel conductor violation</strong>
-        Conductors smaller than 1/0 AWG cannot be paralleled. The selected ${conductor} per set does not meet the minimum size requirement. Increase the number of parallel sets, select a larger breaker, or verify the load requires paralleling.
-      </div>`;
+      html += '<div class="note-block err"><strong>310.10(H) \u2014 Parallel conductor violation</strong>' +
+        'Conductors smaller than 1/0 AWG cannot be paralleled. The selected ' + conductor + ' per set does not meet the minimum size requirement. Increase the number of parallel sets, select a larger breaker, or verify the load requires paralleling.' +
+        '</div>';
     } else if (!exceeded) {
-      html += `<div class="note-block">
-        <strong>Paralleling — 310.10(H)</strong>
-        Each of the ${sets} sets must use ${conductor} conductors. All conductors in each parallel set must be the same size, insulation type, and length. Minimum parallel size is 1/0 AWG.
-      </div>`;
+      html += '<div class="note-block"><strong>Paralleling \u2014 310.10(H)</strong>' +
+        'Each of the ' + sets + ' sets must use ' + conductor + ' conductors. All conductors in each parallel set must be the same size, insulation type, and length. Minimum parallel size is 1/0 AWG.' +
+        '</div>';
     }
   }
 
   if (dwellingRangeViolation) {
-    html += `<div class="note-block err">
-      <strong>310.12 — Out of range</strong>
-      NEC 310.12 and its 83% rule apply only to single-phase 120/240V services and feeders rated 100A through 400A supplying the entire load of a one- or two-family dwelling. For this breaker size, switch to the General (310.16 75°C) application or adjust the breaker rating.
-    </div>`;
+    html += '<div class="note-block err"><strong>310.12 \u2014 Out of range</strong>' +
+      'NEC 310.12 and its 83% rule apply only to single-phase 120/240V services and feeders rated 100A through 400A supplying the entire load of a one- or two-family dwelling. For this breaker size, switch to the General (310.16 75\u00b0C) application or adjust the breaker rating.' +
+      '</div>';
   }
 
-  html += `<div class="note-block">
-    <strong>Equipment grounding conductor — 250.122</strong>
-    Minimum ${egcSize} (${matLabel}) based on ${breaker}A OCPD. If circuit conductors are upsized for any reason, the EGC must be proportionally increased per 250.122(B).
-  </div>`;
+  html += '<div class="note-block"><strong>Equipment grounding conductor \u2014 250.122</strong>' +
+    'Minimum ' + egcSize + ' (' + matLabel + ') based on ' + breaker + 'A OCPD. If circuit conductors are upsized for any reason, the EGC must be proportionally increased per 250.122(B).' +
+    '</div>';
 
   if (exceeded) {
-    html += `<div class="note-block err">
-      <strong>Table exceeded</strong>
-      The required ampacity per set exceeds the largest conductor in NEC 310.16. Consider increasing the number of parallel sets.
-    </div>`;
+    html += '<div class="note-block err"><strong>Table exceeded</strong>' +
+      'The required ampacity per set exceeds the largest conductor in NEC 310.16. Consider increasing the number of parallel sets.' +
+      '</div>';
   }
 
   document.getElementById('result').innerHTML = html;
@@ -925,18 +857,36 @@ function calc() {
 
 /* ── THEME TOGGLE ───────────────────────────────────────────────── */
 function toggleTheme() {
-  const html = document.documentElement;
-  const isDark = html.getAttribute('data-theme') === 'dark';
+  var html = document.documentElement;
+  var isDark = html.getAttribute('data-theme') === 'dark';
   html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('themeIcon').textContent  = isDark ? '🌙' : '☀️';
+  document.getElementById('themeIcon').textContent  = isDark ? '\ud83c\udf19' : '\u2600\ufe0f';
   document.getElementById('themeLabel').textContent = isDark ? 'Dark Mode' : 'Light Mode';
 }
 
 /* ── INIT ───────────────────────────────────────────────────────── */
-['breaker','material','application','sets','ccc'].forEach(id => {
+['breaker','material','application','sets','ccc'].forEach(function(id) {
   document.getElementById(id).addEventListener('change', calc);
 });
 calc();
+
+/* ── SERVICE WORKER ─────────────────────────────────────────────── */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js').then(function (reg) {
+      reg.addEventListener('updatefound', function () {
+        var newWorker = reg.installing;
+        newWorker.addEventListener('statechange', function () {
+          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+            console.log('[AOG SW] Update available \u2014 reload to apply.');
+          }
+        });
+      });
+    }).catch(function (err) {
+      console.warn('[AOG SW] Registration failed:', err);
+    });
+  });
+}
 </script>
 </body>
 </html>
